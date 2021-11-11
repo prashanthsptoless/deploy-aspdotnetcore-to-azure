@@ -13,7 +13,7 @@ namespace dotnet_core_sample.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Freeze", "Brace", "Chill", "Cooling", "Harsh", "Warming", "Balmy", "Hotting", "Swelter", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
