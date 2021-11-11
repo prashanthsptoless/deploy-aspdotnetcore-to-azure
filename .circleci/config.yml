@@ -49,7 +49,7 @@ jobs:
             git add . 
             git commit -m "Deployed app"
             git remote add azure https://laparrilla-portal:Dinner2158%%@dotnet-core-sample.scm.azurewebsites.net/dotnet-core-sample.git
-            git push azure master
+            git push -f azure master
 workflows:
   build-and-deploy:
     jobs:
