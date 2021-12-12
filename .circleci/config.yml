@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  # azure-cli: circleci/azure-cli@1.2.0
+  azure-cli: circleci/azure-cli@1.2.0
   windows: circleci/windows@2.2.0
 
 jobs:
@@ -54,6 +54,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      # - login-to-azure-and-deploy:
-      #     requires:
-      #       - build
+      - login-to-azure-and-deploy:
+          requires:
+            - build
