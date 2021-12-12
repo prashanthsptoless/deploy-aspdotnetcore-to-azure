@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  azure-cli: circleci/azure-cli@1.2.0
+  # azure-cli: circleci/azure-cli@1.2.0
   windows: circleci/windows@2.2.0
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
             git init
             git config --global user.email "yemiwebby@gmail.com"
             git config --global user.name "yemiwebby"
-            git add . 
+            git add .
             git commit -m "Deployed app"
             git remote add azure https://laparrilla-portal:Dinner2158%%@dotnet-core-sample.scm.azurewebsites.net/dotnet-core-sample.git
             git push -f azure master
@@ -54,6 +54,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - login-to-azure-and-deploy:
-          requires:
-            - build
+      # - login-to-azure-and-deploy:
+      #     requires:
+      #       - build
