@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  azure-cli: circleci/azure-cli@1.2.1
+  azure-cli: circleci/azure-cli@1.2.2
   windows: circleci/windows@2.2.0
 jobs:
   build:
@@ -27,25 +27,20 @@ jobs:
           paths:
             - WebAPIFolder
   login-to-azure-and-deploy:
-    executor: azure-cli/default
+    executor: azure-cli/azure-docker
     steps:
-      - azure-cli/install
-      - run:
-          command: az -v
-          name: Verify Azure CLI is installed
-      - azure-cli/login-with-user:
-          alternate-tenant: true
+      - azure-cli/login-with-service-principal
       - run:
           command: az resource list
-          name: List resources of tenant stored as `AZURE_TENANT` env var
-      - attach_workspace:
-          at: ~/project
-      - run:
-          command: az webapp deployment source show --resource-group sample-dotnet-core --name sample-dotnet-core-application
-      - run:
-          name: "Deploy Web App to Azure"
-          command: |
-            az webapp deployment source config-local-git --resource-group sample-dotnet-core --name sample-dotnet-core-application
+          name: List resources of tenant stored as `AZURE_SP_TENANT` env var
+      # - attach_workspace:
+      #     at: ~/project
+      # - run:
+      #     command: az webapp deployment source show --resource-group sample-dotnet-core --name sample-dotnet-core-application
+      # - run:
+      #     name: "Deploy Web App to Azure"
+      #     command: |
+      #       az webapp deployment source config-local-git --resource-group sample-dotnet-core --name sample-dotnet-core-application
 workflows:
   build-and-deploy:
     jobs:
