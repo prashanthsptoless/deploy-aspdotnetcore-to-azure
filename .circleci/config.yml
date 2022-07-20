@@ -44,11 +44,11 @@ jobs:
             az webapp deployment source config-local-git --resource-group DemoApp --name dotnet-core-sample
             cd ~/project/WebAPIFolder/
             git init
-            git config --global user.email "dominic.motuka@gmail.com"
-            git config --global user.name "daumie"
+            git config --global user.email "motukadominic@gmail.com"
+            git config --global user.name "dominicmotuka"
             git add .
             git commit -m "Deploy Azure Web Application"
-            git remote add azure https://None@sample-dotnet-core-application.scm.azurewebsites.net/sample-dotnet-core-application.git
+            git remote add azure https://$GIT_USERNAME:$GIT_PASSWORD@sample-dotnet-core-application.scm.azurewebsites.net/sample-dotnet-core-application.git
             git push azure master
 workflows:
   build-and-deploy:
