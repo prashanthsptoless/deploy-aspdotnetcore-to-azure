@@ -41,7 +41,7 @@ jobs:
       - run:
           name: "Deploy Web App to Azure"
           command: |
-            az webapp deployment source config-local-git --resource-group DemoApp --name dotnet-core-sample
+            az webapp deployment source config-local-git --resource-group sample-dotnet-core --name sample-dotnet-core-application
             cd ~/project/WebAPIFolder/
             git init
             git config --global user.email "motukadominic@gmail.com"
