@@ -30,17 +30,14 @@ jobs:
     executor: azure-cli/azure-docker
     steps:
       - azure-cli/login-with-service-principal
+      - attach_workspace:
+          at: ~/project
       - run:
-          command: az resource list
-          name: List resources of tenant stored as `AZURE_SP_TENANT` env var
-      # - attach_workspace:
-      #     at: ~/project
-      # - run:
-      #     command: az webapp deployment source show --resource-group sample-dotnet-core --name sample-dotnet-core-application
-      # - run:
-      #     name: "Deploy Web App to Azure"
-      #     command: |
-      #       az webapp deployment source config-local-git --resource-group sample-dotnet-core --name sample-dotnet-core-application
+          command: az webapp deployment source show --resource-group sample-dotnet-core --name sample-dotnet-core-application
+      - run:
+          name: "Deploy Web App to Azure"
+          command: |
+            az webapp deployment source config-local-git --resource-group sample-dotnet-core --name sample-dotnet-core-application
 workflows:
   build-and-deploy:
     jobs:
