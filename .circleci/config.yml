@@ -49,7 +49,7 @@ jobs:
             git add .
             git commit -m "Deploy Azure Web Application"
             git remote add azure https://$GIT_USERNAME:$GIT_PASSWORD@sample-dotnet-core-application.scm.azurewebsites.net/sample-dotnet-core-application.git
-            git push azure master
+            git push azure master --force
 workflows:
   build-and-deploy:
     jobs:
